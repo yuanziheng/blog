@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+	<link rel="stylesheet" href="/stylesheets/common.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1433565_64x6g0ecbwq.css">
+	<script src="/javascripts/jq.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+</head>
+<body>
+	<div class="content">
+		<div class="zoom"></div>
+		<div class="box">
+			<span class="text-login text">登录</span>
+			<span class="text-regist text register" style="background: gray">注册</span>
+		</div>
+		<label class="user">
+			<span class="iconfont icon-zhanghu"></span>	
+			<input type="text" class="form-control" id="username" placeholder="username">
+		</label>
+		<label for="exampleInputPassword1">
+			<span class="iconfont icon-mima"></span>	
+			<input type="password" class="form-control" id="password" placeholder="Password">
+		</label>
+		<button type="submit" class="btn login needclick">登录</button>
+		<p>No account yet?Pleace Click  
+		<span type="submit" class="btn register">  立即注册</span></p>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	$(".login").click(function(){
+		let password = md5($("#password").val());
+		$.ajax({
+			type:"post",
+			url:"/users/login",
+			data:{
+				username:$("#username").val(),
+				password:password
+			},
+			success:function(data){
+				console.log(data.username)
+				if(data.msg=='success'){
+					console.log(data.token);
+					localStorage.setItem('token',data.token)
+					localStorage.setItem('username',data.username)
+					location.href='/'
+				}else{
+					alert(data.msg);
+					location.href='/login'
+				}
+			}
+		});
+	})
+	$(".register").click(function(){
+		location.href='/register';
+	})
+</script>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>首页</title>
+	  <script src="/javascripts/jq.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="/stylesheets/index.css">
+  </head>
+  <body>
+    <div class="content">
+        <div class="zoom">
+          <img src="/images/banner.jpg">
+        </div>
+        <% if(username){ %>
+          <h3><span class="author"><%= username %></span>的博客</h3>
+          <h2>Welcome to my website.</h2>
+          <p class="btn relogin needclick">退出登录</p>
+          <button type="submit" class="btn blog needclick">发布文章</button>
+          <table>
+              <tr>
+                <th>序号</th>
+                <th>标题</th>
+                <th>操作</th>
+              </tr>
+        
+             <% data.map(function(item,i){ %>
+                <tr>
+                    <td><%- i+1 %></td>
+                    <td><a href="/detail?id=<%- item._id %>"><%- item.title %></a></td>
+                    <td><span class="del" data-id="<%- item._id %>">删除</span></td>
+                </tr>
+             <% })  %>
+
+          </table>
+          <ul>
+            <li><a href="?pageNo=<%-pageNo<=1?1:parseInt(pageNo)-1%>">
+            <span>上一页</span></a></li>
+            
+            <%if(page>5){%>
+              <li><a href="?pageNo=1">1</a></li>
+              <li><a href="?pageNo=2">2</a></li>
+              <li><a href="#">...</a></li>
+              <li><a href="?pageNo=<%-page-1%>"><%-page-1%></a></li>
+              <li><a href="?pageNo=<%-page%>"><%-page%></a></li>
+            <%}else{%>
+              <% for(let i =0;i<page;i++){ %>
+                <li><a href="?pageNo=<%-i+1%>"><%-i+1%></a></li>
+              <%}%>
+            <%}%>
+
+
+            <li><a href="?pageNo=<%-pageNo>=page?page:parseInt(pageNo)+1%>">
+              <span>下一页</span></a></li>
+          </ul>
+    
+        <% }else{ %>
+          <h3>欢迎访问</h3>
+          <button type="submit" class="btn login needclick">登录</button>
+          <button type="submit" class="btn register needclick">注册</button>
+        <% } %>
+    </div>
+    
+    
+    
+
+  </body>
+  <script>
+    $(".login").click(function(){
+      location.href = '/login'
+    })
+    $(".register").click(function(){
+      location.href = '/register'
+    })
+    $(".relogin").click(function(){
+      location.href = '/relogin'
+    })
+    $(".blog").click(function(){
+      // let username = localStorage.getItem('username');
+      // console.log(username);
+      // $.ajax({
+      //   type:'post',
+      //   url:'/users/blog',
+      //   data:{author:username},
+      //   success:function(data){
+      //     if(data.msg=="success"){
+            location.href='/blog'
+      //     }
+      //   }
+      // })
+    })
+    $(".del").click(function(){
+      let id = $(this).attr("data-id");
+      $.ajax({
+        type:'post',
+        url:'/users/detail',
+        data:{id:id},
+        success:function(data){
+          if(data.msg=="success"){
+            alert(data.msg)
+            location.href='/'
+          }
+        }
+      })
+    })
+  </script>
+</html>

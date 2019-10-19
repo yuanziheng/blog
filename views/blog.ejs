@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+	<link rel="stylesheet" href="/stylesheets/blog.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1433565_64x6g0ecbwq.css">
+	<script src="/javascripts/jq.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/xheditor/xheditor-1.2.2.min.js"></script>
+    <script src="/javascripts/xheditor/xheditor_lang/zh-cn.js"></script>
+
+</head>
+<body>
+		<div class="content">
+				<div class="blogzoom"></div>
+				<div class="box">
+					<h2>发布文章</h2>
+				</div>
+				<label class="title">
+					<input type="text" class="form-control" id="title" placeholder="标题">
+                </label>
+                <div class="fwb">
+                    <textarea id="con" cols="30" rows="10" class="xheditor"></textarea>
+                </div>
+				
+				<span type="submit" class="btn fabu">  立即发布</span>
+            </div>
+            
+</body>
+<script src="/javascripts/fwb.js"></script>
+<script type="text/javascript">
+    let author = localStorage.getItem('username')
+    console.log(author)
+    $('.fabu').click(function(){
+        $.ajax({
+            type:'post',
+            data:{
+                author:author,
+                title:$('#title').val(),
+                con:$("#con").val()
+            },
+            url:'/users/blog',
+            success:function(data){
+                console.log(data);
+                if(data.msg=="success"){
+                    location.href='/'
+                }
+            }
+        })
+    })
+</script>
+</html>

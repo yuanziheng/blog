@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <title>详情页</title>
+    <script src="/javascripts/jq.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/detail.css">
+</head>
+<body>
+        <div class="content">
+            <div class="zoom">
+                <img src="/images/banner.jpg">
+            </div>
+            <h3><%= username %>的博客</h3>
+            <h2>Welcome to my website.</h2>
+            <p class="btn relogin needclick">退出登录</p>
+            <button type="submit" class="btn blog needclick">发布文章</button>
+
+             <div class="left">
+                 <h2 class="title"><%- detail.title%></h2>
+                <p><%- detail.con%></p> 
+             </div>
+            <div class="right">
+                <img src="/images/aside<%- Math.floor(Math.random()*6) %>.jpg">
+            </div>
+        </div>
+    
+</body>
+<script>
+    $(".relogin").click(function(){
+      location.href = '/relogin'
+    })
+    $(".blog").click(function(){
+      location.href = '/blog'
+    })
+</script>
+</html>

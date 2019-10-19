@@ -1,0 +1,29 @@
+.title{
+    color: orange;
+}
+.left{
+    margin-top: 70px;
+    float: left;
+    width: 770px;
+    border-right: 1px solid gray;
+    min-height: 300px;
+    padding: 15px;
+}
+.left p {
+    text-align: left;
+    text-indent: 36px;
+    font-size: 18px;
+    line-height: 26px;
+}
+.right{
+    margin-top: 70px;
+    float: left;
+    width: 399px;
+
+}
+.right img{
+    width: 100%;
+}
+.relogin{
+    cursor: pointer;
+}

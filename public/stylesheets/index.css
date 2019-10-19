@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;;
+}
+.content{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.zoom{
+    position: absolute;
+    width: 1200px;
+    height: 414px;
+    z-index: -1;
+   
+}
+.zoom img{
+    width: 100%;
+}
+h3{
+    font-size: 48px;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+  
+}
+h2{
+    font-size: 42px;
+    color: white;
+    text-align: center;
+}
+.login,.register{
+    display: block;
+    width: 200px;
+    height: 30px;
+    border: 0;
+    border-radius: 30px;
+    color: white;
+    background: rgba(255,255,255, .8);
+    margin: 60px auto;
+    cursor: pointer;
+}
+.blog{
+    display: block;
+    width: 200px;
+    height: 30px;
+    border: 0;
+    border-radius: 30px;
+    color: white;
+    background: green;
+    margin: 50px auto;
+}
+.relogin{
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   border: 0;
+   color: white;
+   cursor: pointer;
+
+}
+
+table{
+    margin: 120px auto 0;
+}
+table th{
+    padding: 10px 160px;
+    background: #77FFCC;
+    text-align: center;
+}
+table td{
+    padding: 10px 160px;
+    background: #BBFFEE;
+    text-align: center;
+}
+.del{
+    width: 50px;
+    height: 30px;
+    display: block;
+    background: #ff3333;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+ul{
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+li{
+    list-style: none;
+    padding: 0 5px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid ;
+    line-height: 30px;
+}
+ul li a{
+    text-decoration: none;
+}
